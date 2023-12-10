@@ -1,0 +1,9 @@
+{
+	"authors": [
+		"Marcelo Silva Nascimento Mancini"
+	],
+	"copyright": "Copyright © 2023, Marcelo Silva Nascimento Mancini",
+	"description": "A minimal D application.",
+	"license": "proprietary",
+	"name": "avaudioengine"
+}
