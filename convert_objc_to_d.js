@@ -5,16 +5,47 @@ function convertObjCToD(objcCode) {
     // Remove documentation and API_AVAILABLE expressions
     objcCode = objcCode.replace(/\/\*[\s\S]*?\*\//g, '');
     objcCode = objcCode.replace(/API_AVAILABLE\(.+\)/g, '');
+    objcCode = objcCode.replace(/API_UNAVAILABLE\(.+\)/g, '');
+    objcCode = objcCode.replace(/NS_ENUM_AVAILABLE\(.+\)/g, '');
+
+    // Convert enums
+
+    for(let match of [...objcCode.matchAll(/typedef NS_ENUM\((\w+),\s*(\w+)\)\s*\{([^}]+)\}\s*;/g)])
+    {
+        let [fullMatch, type, enumName, members] = match;
+        members = members.replaceAll(enumName, "");
+        objcCode = objcCode.replace(fullMatch, `enum ${enumName} : ${type} { ${members}} `);
+    }
+    for(let match of [...objcCode.matchAll(/typedef NS_OPTIONS\((\w+),\s*(\w+)\)\s*\{([^}]+)\}\s*;/g)])
+    {
+        let [fullMatch, type, enumName, members] = match;
+        members = members.replaceAll(enumName.slice(0, -"Options".length), "");
+        objcCode = objcCode.replace(fullMatch, `enum ${enumName} : ${type} { ${members}} `);
+    }
 
     // Convert typedefs
     objcCode = objcCode.replace(/typedef\s+(\w+)\s*\(\^(\w+)\)\s*(.+);/g,
                                 'alias $2 = $1 function $3;');
-    // Convert enums
-    objcCode = objcCode.replace(/typedef NS_ENUM\((\w+),\s*(\w+)\)\s*\{([^}]+)\}\s*;/g,
-                                'enum $2 : $1 { $3 }');
+    //Convert type typedef
+    objcCode = objcCode.replace(/typedef\s+([^\s]+)\s+(\w+);/g, "alias $2 = $1");
+
+    //Convert struct typedef
+    for(let match of [...objcCode.matchAll(/typedef\s+struct\s+([^\s]+)\s+(\w+);/g)])
+    {
+        let [fullMatch, theType, aliasName] = match;
+        objcCode = objcCode.replace(fullMatch, theType == aliasName ? "" : `alias ${aliasName} = ${theType}`);
+    }
+
+    //Convert struct definition
+    for(let match of [...objcCode.matchAll(/typedef\s+struct\s+([^\s]+)\s*({[^}]+})\s*(\w+);/g)])
+    {
+        let [fullMatch, stubType, definition, aliasName] = match;
+        objcCode = objcCode.replace(fullMatch, `struct ${aliasName}\n${definition}`);
+    }
+    
 
     // Convert classes and protocols
-    let matches = [...objcCode.matchAll(/@(interface|protocol)\s+(\w+)(\s*:\s*\w+)?\s*\{[\s\S]*\}([\s\S]*)@end/g)];
+    let matches = [...objcCode.matchAll(/@(interface|protocol)\s+(\w+)(\s*:\s*\w+)?\s*(?:<\w+>)?(?:\(\w+\))?\s*(?:\{[\s\S]*?\})?([\s\S]*?)@end/g)];
     for (let match of matches) {
         let [fullMatch, kind, name, inheritance, body] = match;
         console.log(body)
@@ -66,21 +97,22 @@ function convertProperties(body) {
             convertedProp += `    ${type} ${name}(${type});\n`;
         }
 
-        return convertedProp;
+        return convertedProp+'\n';
     }).join('');
 }
 
 function convertTypeToD(type) 
 {
     type = type.replace(/<([^>]+)>/g, '!($1)');
+    type = type.replace("instancetype", "typeof(this)");
     type = type.replace('NSArray', 'NSArray_');
     return type;
 }
 
 function convertMethods(body) {
-    let methods = [...body.matchAll(/-\s*\(([^)]+)\)\s*([^;]+);/g)];
+    let methods = [...body.matchAll(/(-|\+)\s*\(([^)]+)\)\s*([^;]+);/g)];
     return methods.map(method => {
-        let [fullMethod, returnType, rest] = method;
+        let [fullMethod, methodType, returnType, rest] = method;
         let selectorName, methodName, paramNames;
         if(rest.includes(':'))
         {
@@ -104,7 +136,8 @@ function convertMethods(body) {
             selectorName = methodName = rest.trim();
             paramNames = "";
         }
-        return `    @selector("${selectorName}")\n    ${convertTypeToD(returnType)} ${methodName.trim()}(${paramNames});\n`;
+        return `    @selector("${selectorName}")\n    ` + (methodType == '+' ? "static " : "") +
+            `${convertTypeToD(returnType)} ${methodName.trim()}(${paramNames});\n\n`;
     }).join('');
 }
 
