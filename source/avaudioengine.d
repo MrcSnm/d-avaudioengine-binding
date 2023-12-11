@@ -1,7 +1,11 @@
-
 module avaudioengine;
+import objc.meta;
+import objc.runtime;
 public import avaudioconnectionpoint;
 public import avaudiotypes;
+
+
+@ObjectiveC extern(C++) final:
 
 alias AUMIDIEventListBlock = OSStatus function(AUEventSampleTime eventSampleTime, uint8_t cable, const MIDIEventList *eventList);
 

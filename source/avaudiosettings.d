@@ -1,46 +1,38 @@
 module avaudiosettings;
+import objc.runtime;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
-extern const NSString AVFormatIDKey;
-extern const NSString AVSampleRateKey;
-extern const NSString AVNumberOfChannelsKey;
-
-
-extern const NSString AVLinearPCMBitDepthKey;
-extern const NSString AVLinearPCMIsBigEndianKey;
-extern const NSString AVLinearPCMIsFloatKey;
-
-extern const NSString AVLinearPCMIsNonInterleaved;
 alias AVLinearPCMIsNonInterleavedKey = AVLinearPCMIsNonInterleaved;
 
-
-extern const NSString AVAudioFileTypeKey;
-
-
-extern const NSString AVEncoderAudioQualityKey;
-extern const NSString AVEncoderAudioQualityForVBRKey;
-
-	
-extern const NSString AVEncoderBitRateKey;
-extern const NSString AVEncoderBitRatePerChannelKey;
-extern const NSString AVEncoderBitRateStrategyKey;
-extern const NSString AVEncoderBitDepthHintKey;
-
-
-extern const NSString AVSampleRateConverterAlgorithmKey;
-extern const NSString AVSampleRateConverterAudioQualityKey;
-
-
-extern const NSString AVChannelLayoutKey;
-
-extern const NSString AVAudioBitRateStrategy_Constant;
-extern const NSString AVAudioBitRateStrategy_LongTermAverage;
-extern const NSString AVAudioBitRateStrategy_VariableConstrained;
-extern const NSString AVAudioBitRateStrategy_Variable;
-
-
-extern const NSString AVSampleRateConverterAlgorithm_Normal;
-extern const NSString AVSampleRateConverterAlgorithm_Mastering;
-extern const NSString AVSampleRateConverterAlgorithm_MinimumPhase;
+extern(C) __gshared extern const
+{
+	NSString AVFormatIDKey;
+	NSString AVSampleRateKey;
+	NSString AVNumberOfChannelsKey;
+	NSString AVLinearPCMBitDepthKey;
+	NSString AVLinearPCMIsBigEndianKey;
+	NSString AVLinearPCMIsFloatKey;
+	NSString AVLinearPCMIsNonInterleaved;
+	NSString AVAudioFileTypeKey;
+	NSString AVEncoderAudioQualityKey;
+	NSString AVEncoderAudioQualityForVBRKey;
+	NSString AVEncoderBitRateKey;
+	NSString AVEncoderBitRatePerChannelKey;
+	NSString AVEncoderBitRateStrategyKey;
+	NSString AVEncoderBitDepthHintKey;
+	NSString AVSampleRateConverterAlgorithmKey;
+	NSString AVSampleRateConverterAudioQualityKey;
+	NSString AVChannelLayoutKey;
+	NSString AVAudioBitRateStrategy_Constant;
+	NSString AVAudioBitRateStrategy_LongTermAverage;
+	NSString AVAudioBitRateStrategy_VariableConstrained;
+	NSString AVAudioBitRateStrategy_Variable;
+	NSString AVSampleRateConverterAlgorithm_Normal;
+	NSString AVSampleRateConverterAlgorithm_Mastering;
+	NSString AVSampleRateConverterAlgorithm_MinimumPhase;
+}
 
 enum AVAudioQuality : NSInteger { 
 	Min    = 0,

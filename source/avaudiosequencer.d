@@ -1,4 +1,7 @@
 module avaudiosequencer;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
 enum AVMusicSequenceLoadOptions : NSUInteger { 
 	SMF_PreserveTracks		= 0,

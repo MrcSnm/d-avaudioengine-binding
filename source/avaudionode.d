@@ -1,12 +1,16 @@
 module avaudionode;
 import avaudiotypes;
+import avaudioengine;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
 alias AVAudioNodeTapBlock = void function (AVAudioPCMBuffer *buffer, AVAudioTime *when);
 
 class AVAudioNode {
     mixin ObjcExtend! NSObject;
     @selector("engine")
-    AVAudioEngine * engine();
+    AVAudioEngine engine();
 
     @selector("numberOfInputs")
     NSUInteger  numberOfInputs();

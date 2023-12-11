@@ -1,7 +1,10 @@
 module avaudioplayer;
 
 import avaudioformat;
-import avaudiotsettings;
+import avaudiosettings;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
 
 class AVAudioPlayer {

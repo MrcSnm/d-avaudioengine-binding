@@ -1,4 +1,7 @@
 module avaudiosourcenode;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
 alias AVAudioSourceNodeRenderBlock = OSStatus function (BOOL *isSilence, const AudioTimeStamp *timestamp, AVAudioFrameCount frameCount, AudioBufferList *outputData)  ;
 

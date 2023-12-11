@@ -1,6 +1,9 @@
 module avaudioionode;
 public import avaudionode;
 public import avaudiomixing;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
 class AVAudioIONode {
     mixin ObjcExtend! AVAudioNode;

@@ -1,9 +1,10 @@
 {
-	"authors": [
-		"Marcelo Silva Nascimento Mancini"
-	],
-	"copyright": "Copyright © 2023, Marcelo Silva Nascimento Mancini",
-	"description": "A minimal D application.",
-	"license": "proprietary",
+	"authors": ["Hipreme"],
+	"dependencies": {
+		"objc_meta": "~>1.0.3"
+	},
+	"copyright": "Copyright © 2023, Hipreme",
+	"description": "AVAudioEngine binding for D.",
+	"license": "MIT",
 	"name": "avaudioengine"
 }

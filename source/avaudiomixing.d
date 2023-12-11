@@ -1,5 +1,8 @@
 module avaudiomixing;
 public import avaudiotypes;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
 interface AVAudioStereoMixing {
     @selector("volume")
@@ -10,11 +13,7 @@ interface AVAudioStereoMixing {
 
     @selector("destinationForMixer:bus:")
     AVAudioMixingDestination * destinationForMixer(AVAudioNode * destinationForMixer, AVAudioNodeBus bus);
-
-}
-
-
-interface AVAudioStereoMixing {
+    
     @selector("pan")
     float  pan();
 

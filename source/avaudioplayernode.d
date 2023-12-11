@@ -2,6 +2,9 @@ module avaudioplayernode;
 
 import avaudionode;
 import avaudiofile;
+import objc.meta;
+import objc.runtime;
+@ObjectiveC extern(C++) final:
 
 enum AVAudioPlayerNodeBufferOptions : NSUInteger { 
     Loops			= 1UL << 0,		// 0x01
@@ -11,9 +14,9 @@ enum AVAudioPlayerNodeBufferOptions : NSUInteger {
 
 
 enum AVAudioPlayerNodeCompletionCallbackType : NSInteger { 
-	AVAudioPlayerNodeCompletionDataConsumed		= 0,
-	AVAudioPlayerNodeCompletionDataRendered		= 1,
-	AVAudioPlayerNodeCompletionDataPlayedBack	= 2,
+	DataConsumed		= 0,
+	DataRendered		= 1,
+	DataPlayedBack	= 2,
 } 
 
 

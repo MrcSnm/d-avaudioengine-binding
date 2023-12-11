@@ -1,11 +1,16 @@
 module avaudiotypes;
 import core.stdc.stdint;
+import objc.runtime;
+import objc.meta;
+
+
+extern(C++) final @ObjectiveC:
 
 alias AVAudioFramePosition = int64_t;
 alias AVAudioFrameCount = uint32_t;
 alias AVAudioPacketCount = uint32_t;
 alias AVAudioChannelCount = uint32_t;
-alias AVAudioNodeCompletionHandler = void function (void);
+alias AVAudioNodeCompletionHandler = void function ();
 alias AVAudioNodeBus = NSUInteger;
 alias AVMusicTimeStamp = double;
 struct AVAudio3DPoint {

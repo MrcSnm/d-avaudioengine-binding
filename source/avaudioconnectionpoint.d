@@ -1,5 +1,10 @@
 module avaudioconnectionpoint;
 import avaudionode;
+import objc.meta;
+import objc.runtime;
+
+
+@ObjectiveC extern(C++) final:
 
 class AVAudioConnectionPoint {
     mixin ObjcExtend! NSObject;

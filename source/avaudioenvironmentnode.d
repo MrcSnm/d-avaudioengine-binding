@@ -1,6 +1,11 @@
 module avaudioenvironmentnode;
+
+import objc.meta;
+import objc.runtime;
 public import avaudionode;
 public import avaudiomixing;
+
+@ObjectiveC extern(C++) final:
 
 enum AVAudioEnvironmentDistanceAttenuationModel : NSInteger { 
     Exponential   = 1,
@@ -61,8 +66,8 @@ class AVAudioEnvironmentReverbParameters {
     @selector("filterParameters")
     AVAudioUnitEQFilterParameters * filterParameters();
 
-    @selector("init NS_UNAVAILABLE")
-    typeof(this) init NS_UNAVAILABLE();
+    @selector("init")
+    typeof(this) init();
 
     @selector("loadFactoryReverbPreset:")
     void loadFactoryReverbPreset(AVAudioUnitReverbPreset loadFactoryReverbPreset);
