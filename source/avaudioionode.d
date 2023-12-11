@@ -1,9 +1,6 @@
-module avaudionode;
-
-alias AVAudioIONodeInputBlock =  const AudioBufferList * function(AVAudioFrameCount inNumberOfFrames);
-
-
-
+module avaudioionode;
+public import avaudionode;
+public import avaudiomixing;
 
 class AVAudioIONode {
     mixin ObjcExtend! AVAudioNode;
@@ -19,9 +16,6 @@ class AVAudioIONode {
 }
 
 
-
-
-
 class AVAudioInputNode {
     mixin ObjcExtend! AVAudioIONode;
     @selector("init")
@@ -31,9 +25,6 @@ class AVAudioInputNode {
     BOOL setManualRenderingInputPCMFormat(AVAudioFormat * setManualRenderingInputPCMFormat, AVAudioIONodeInputBlock inputBlock);
 
 }
-
-
-
 
 class AVAudioOutputNode {
     mixin ObjcExtend! AVAudioIONode;

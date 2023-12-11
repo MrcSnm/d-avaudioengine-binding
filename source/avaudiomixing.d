@@ -1,5 +1,5 @@
 module avaudiomixing;
-import avaudiotypes;
+public import avaudiotypes;
 
 interface AVAudioStereoMixing {
     @selector("volume")
@@ -23,8 +23,8 @@ interface AVAudioStereoMixing {
 
 }
 
-enum AVAudio3DMixingRenderingAlgorithm : NSInteger
-{
+
+enum AVAudio3DMixingRenderingAlgorithm : NSInteger { 
     EqualPowerPanning      = 0,
     SphericalHead          = 1,
     HRTF                   = 2,
@@ -32,7 +32,7 @@ enum AVAudio3DMixingRenderingAlgorithm : NSInteger
     StereoPassThrough      = 5,
     HRTFHQ                 = 6,
     Auto        = 7
-}
+} 
 
 
 
@@ -50,6 +50,8 @@ enum AVAudio3DMixingPointSourceInHeadMode : NSInteger {
     Bypass  = 1
 } 
 
+interface AVAudio3DMixing {
+}
 
 class AVAudioMixingDestination {
     mixin ObjcExtend! NSObject;

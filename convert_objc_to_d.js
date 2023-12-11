@@ -146,10 +146,15 @@ function main(inputFilePath, outputFilePath) {
     let convertedDCode = convertObjCToD(objcCode);
     fs.writeFileSync(outputFilePath, convertedDCode);
 }
-
-if (process.argv.length !== 4) {
+if (process.argv.length < 3) {
     console.log('Usage: node convert_objc_to_d.js <input_file> <output_file>');
     process.exit(1);
 }
 
-main(process.argv[2], process.argv[3]);
+let outputFile;
+if(process.argv.length === 4)
+    outputFile = process.argv[3];
+else
+    outputFile = "source/"+process.argv[2].slice(0, -2).toLowerCase()+".d"
+
+main(process.argv[2], outputFile);
