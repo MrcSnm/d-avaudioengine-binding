@@ -15,10 +15,14 @@ enum AVAudioCommonFormat : NSUInteger
 }
 
 
+///An object that describes the representation of an audio format.
 class AVAudioFormat {
     mixin ObjcExtend! NSObject;
-    @selector("standard")
+    @selector("isStandard")
     BOOL  isStandard();
+
+    @selector("alloc")
+    static typeof(this) alloc();
 
     @selector("commonFormat")
     AVAudioCommonFormat  commonFormat();
@@ -29,29 +33,29 @@ class AVAudioFormat {
     @selector("sampleRate")
     double  sampleRate();
 
-    @selector("interleaved")
+    @selector("isInterleaved")
     BOOL  isInterleaved();
 
     @selector("channelLayout")
-    AVAudioChannelLayout * channelLayout();
+    AVAudioChannelLayout channelLayout();
 
     @selector("initWithStreamDescription:")
-    typeof(this) initWithStreamDescription(const AudioStreamBasicDescription * initWithStreamDescription);
+    typeof(this) initWithStreamDescription(const AudioStreamBasicDescription* initWithStreamDescription);
 
     @selector("initWithStreamDescription:channelLayout:")
-    typeof(this) initWithStreamDescription(const AudioStreamBasicDescription * initWithStreamDescription, AVAudioChannelLayout *  channelLayout = null);
+    typeof(this) initWithStreamDescription(const AudioStreamBasicDescription* initWithStreamDescription, AVAudioChannelLayout  channelLayout = null);
 
     @selector("initStandardFormatWithSampleRate:channels:")
     typeof(this) initStandardFormatWithSampleRate(double initStandardFormatWithSampleRate, AVAudioChannelCount channels);
 
     @selector("initStandardFormatWithSampleRate:channelLayout:")
-    typeof(this) initStandardFormatWithSampleRate(double initStandardFormatWithSampleRate, AVAudioChannelLayout * channelLayout);
+    typeof(this) initStandardFormatWithSampleRate(double initStandardFormatWithSampleRate, AVAudioChannelLayout channelLayout);
 
     @selector("initWithCommonFormat:sampleRate:channels:interleaved:")
     typeof(this) initWithCommonFormat(AVAudioCommonFormat initWithCommonFormat, double sampleRate, AVAudioChannelCount channels, BOOL interleaved);
 
     @selector("initWithCommonFormat:sampleRate:interleaved:channelLayout:")
-    typeof(this) initWithCommonFormat(AVAudioCommonFormat initWithCommonFormat, double sampleRate, BOOL interleaved, AVAudioChannelLayout * channelLayout);
+    typeof(this) initWithCommonFormat(AVAudioCommonFormat initWithCommonFormat, double sampleRate, BOOL interleaved, AVAudioChannelLayout channelLayout);
 
     @selector("initWithSettings:")
     typeof(this) initWithSettings(NSDictionary_!(NSString, void*) initWithSettings);

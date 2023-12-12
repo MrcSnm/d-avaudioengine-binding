@@ -87,7 +87,7 @@ function convertProperties(body) {
         type = convertTypeToD(type);
 
         // Define the getter
-        let convertedProp = `    @selector("${name}")`+'\n';
+        let convertedProp = `    @selector("${getterName}")`+'\n';
         convertedProp+= `    ${type} ${getterName}();`+'\n';
 
         // Define the setter if not readonly

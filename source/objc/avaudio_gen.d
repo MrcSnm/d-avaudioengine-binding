@@ -25,7 +25,8 @@ import avaudiobuffer,
     avaudiouniteffect,
     avaudiouniteq,
     avaudiounitreverb,
-    avmusicevents;
+    avmusicevents,
+    avaudioconverter;
 
 
 mixin ObjcLinkModule!(avaudiobuffer);
@@ -52,4 +53,5 @@ mixin ObjcLinkModule!(avaudiouniteffect);
 mixin ObjcLinkModule!(avaudiouniteq);
 mixin ObjcLinkModule!(avaudiounitreverb);
 mixin ObjcLinkModule!(avmusicevents);
+mixin ObjcLinkModule!(avaudioconverter);
 mixin ObjcInitSelectors!(__traits(parent, {}));

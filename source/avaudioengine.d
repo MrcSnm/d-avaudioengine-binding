@@ -9,6 +9,7 @@ public import avaudiomixernode;
 public import avaudiomixing;
 public import avaudioformat;
 public import avaudiobuffer;
+public import avaudioplayernode;
 public import core.stdc.stdint;
 
 
@@ -63,11 +64,20 @@ class AVAudioEngine {
     @selector("running")
     BOOL  isRunning();
 
+    @selector("alloc")
+    static AVAudioEngine alloc();
+
     @selector("init")
     typeof(this) init();
 
     @selector("attachNode:")
     void attachNode(AVAudioNode attachNode);
+
+    extern(D) final pragma(inline, true)
+    {
+        void attachNode(AVAudioPlayerNode node){attachNode(cast(AVAudioNode)node);}
+        void attachNode(AVAudioMixerNode node){attachNode(cast(AVAudioNode)node);}
+    }
 
     @selector("detachNode:")
     void detachNode(AVAudioNode detachNode);
@@ -97,7 +107,7 @@ class AVAudioEngine {
     void prepare();
 
     @selector("startAndReturnError:")
-    BOOL startAndReturnError(NSError* startAndReturnError);
+    BOOL start(NSError* error);
 
     @selector("pause")
     void pause();

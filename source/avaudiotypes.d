@@ -10,6 +10,99 @@ extern(C++) final @ObjectiveC:
 alias AudioFormatID = uint;
 alias AudioFormatFlags = uint;
 
+///https://en.wikipedia.org/wiki/FourCC
+private extern(D) uint fourCC(char[4] value)
+{
+    uint ret;
+    foreach(i; 0..4)
+        ret|= value[i] << ((3-i)*8);
+    return ret;
+}
+
+///Identifiers for supported audio formats.
+enum : AudioFormatFlags
+{
+    ///A key that specifies the AC-3 codec, which provides data packaged for transport over an IEC 60958-compliant digital audio interface, and uses standard flags.
+    kAudioFormat60958AC3 = "cac3".fourCC,
+    ///A key that specifies the AC-3 codec, and uses no flags.
+    kAudioFormatAC3 = "ac-3".fourCC,
+    ///A key that specifies the codec defined by the AES3-2003 standard, and uses no flags.
+    kAudioFormatAES3 = "aes3".fourCC,
+    ///A key that specifies the A-law 2:1 codec, and uses no flags.
+    kAudioFormatALaw = "alaw".fourCC,
+    ///A key that specifies the Adaptive Multi-Rate (AMR) narrow band speech codec, and uses no flags.
+    kAudioFormatAMR = "samr".fourCC,
+    ///A key that specifies the AMR Wideband speech codec, and uses no flags.
+    kAudioFormatAMR_WB = "sawb".fourCC,
+    ///A key that specifies Apple’s implementation of the IMA 4:1 ADPCM codec, and uses no flags.
+    kAudioFormatAppleIMA4 = "ima4".fourCC,
+    ///A key that specifies the Apple Lossless codec, and uses flags to indicate the bit depth of the source material.
+    kAudioFormatAppleLossless = "alac".fourCC,
+    vkAudioFormatAudible = "AUD".fourCC,
+    ///A key that specifies the codec defined by DVI/Intel IMA ADPCM - ACM code 17, and uses no flags.,
+    kAudioFormatDVIIntelIMA = 0x6D730011,
+    ///A key that specifies the Enhanced AC-3 codec, and uses no flags.
+    kAudioFormatEnhancedAC3 = "ec-3".fourCC,
+    ///A key that specifies the Free Lossless Audio Codec (FLAC), and uses flags to indicate the bit depth of the source material.
+    kAudioFormatFLAC = "flac".fourCC,
+    ///A key that specifies the linear PCM codec, and uses the standard flags.
+    kAudioFormatLinearPCM = "lpcm".fourCC,
+    ///A key that specifies the MACE 3:1 codec, and uses no flags.
+    kAudioFormatMACE3 = "MAC3".fourCC,
+    ///A key that specifies the MACE C:1 codec, and uses no flags.
+    kAudioFormatMACE6 = "MAC6".fourCC,
+    ///A key that specifies the MIDI stream codec, and uses no flags.
+    kAudioFormatMIDIStream = "midi".fourCC,
+    ///A key that specifies the MPEG-4 AAC Low Complexity codec, and uses no flags.
+    kAudioFormatMPEG4AAC = "aac ".fourCC,
+    ///A key that specifies the MPEG-4 Enhanced Low Delay AAC codec, and uses no flags.
+    kAudioFormatMPEG4AAC_ELD = "aace".fourCC,
+    ///A key that specifies the MPEG-4 Enhanced Low Delay AAC codec with a spectral band replication (SBR) extension layer, and uses no flags.
+    kAudioFormatMPEG4AAC_ELD_SBR = "aacf".fourCC,
+    ///A key that specifies the MPEG-4 Enhanced Low Delay AAC version 2 codec, and uses no flags.
+    kAudioFormatMPEG4AAC_ELD_V2 = "aacg".fourCC,
+    ///A key that specifies the MPEG-4 High-Efficiency AAC codec, and uses no flags.
+    kAudioFormatMPEG4AAC_HE = "aach".fourCC,
+    ///A key that specifies the MPEG-4 High-Efficiency AAC version 2 codec, and uses no flags.
+    kAudioFormatMPEG4AAC_HE_V2 = "aacp".fourCC,
+    ///A key that specifies the MPEG-4 Low Delay AAC codec, and uses no flags.
+    kAudioFormatMPEG4AAC_LD = "aacl".fourCC,
+    ///A key that specifies the MPEG-4 Spatial Audio Coding codec, and uses no flags.
+    kAudioFormatMPEG4AAC_Spatial = "aacs".fourCC,
+    ///A key that specifies the MPEG-4 CELP codec, and uses flags to indicate the specific kind of data.
+    kAudioFormatMPEG4CELP = "celp".fourCC,
+    ///A key that specifies the MPEG-4 HVXC codec, and uses no flags.
+    kAudioFormatMPEG4HVXC = "hvxc".fourCC,
+    ///A key that specifies the MPEG-4 TwinVQ codec, and uses no flags.
+    kAudioFormatMPEG4TwinVQ = "twvq".fourCC,
+    ///A key that specifies the MPEG-D Unified Speech and Audio Coding codec, and uses no flags.
+    kAudioFormatMPEGD_USAC = "usac".fourCC,
+    ///A key that specifies the MPEG-1/2, Layer I audio codec, and uses no flags.
+    kAudioFormatMPEGLayer1 = ".mp1".fourCC,
+    ///A key that specifies the MPEG-1/2, Layer II audio codec, and uses no flags.
+    kAudioFormatMPEGLayer2 = ".mp2".fourCC,
+    ///A key that specifies the MPEG-1/2, Layer III audio codec, and uses no flags.
+    kAudioFormatMPEGLayer3 = ".mp3".fourCC,
+    ///A key that specifies the Microsoft GSM 6.10 - ACM code 49 codec, and uses no flags.
+    kAudioFormatMicrosoftGSM = 0x6D730031,
+    ///A key that specifies the Opus codec, and uses no flags.
+    kAudioFormatOpus = "opus".fourCC,
+    ///A key that specifies the A side-chain of float 32 data that an audio unit provides for sending high-density parameter value control information, and uses no flags.
+    kAudioFormatParameterValueStream = "apvs".fourCC,
+    ///A key that specifies the QDesign music codec, and uses no flags.
+    kAudioFormatQDesign = "QDMC".fourCC,
+    ///A key that specifies the QDesign 2 music codec, and uses no flags.
+    kAudioFormatQDesign2 = "QDM2".fourCC,
+    ///A key that specifies the Qualcomm PureVoice codec, and uses no flags.
+    kAudioFormatQUALCOMM = "Qclp".fourCC,
+    ///A key that specifies the A stream of audio timestamp structures, and uses audio timestamp flags.
+    kAudioFormatTimeCode = "time".fourCC,
+    ///A key that specifies the μ-Law 2:1 codec, and uses no flags.
+    kAudioFormatULaw = "ulaw".fourCC,
+    ///A key that specifies the internet Low Bitrate Codec (iLBC) narrow band speech codec, and uses no flags.
+    kAudioFormatiLBC = "ilbc".fourCC,
+}
+
 struct AudioStreamBasicDescription
 {
     ///An identifier specifying the general audio data format in the stream.

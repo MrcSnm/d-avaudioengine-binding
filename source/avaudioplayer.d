@@ -19,10 +19,10 @@ class AVAudioPlayer {
     NSTimeInterval  duration();
 
     @selector("url")
-    NSURL * url();
+    NSURL url();
 
     @selector("data")
-    NSData * data();
+    NSData data();
 
     @selector("meteringEnabled")
     BOOL  isMeteringEnabled();
@@ -31,16 +31,16 @@ class AVAudioPlayer {
     BOOL  meteringEnabled(BOOL );
 
     @selector("initWithContentsOfURL:error:")
-    typeof(this) initWithContentsOfURL(NSURL * initWithContentsOfURL, NSError ** error);
+    typeof(this) initWithContentsOfURL(NSURL initWithContentsOfURL, NSError* error);
 
     @selector("initWithData:error:")
-    typeof(this) initWithData(NSData * initWithData, NSError ** error);
+    typeof(this) initWithData(NSData initWithData, NSError* error);
 
     @selector("initWithContentsOfURL:fileTypeHint:error:")
-    typeof(this) initWithContentsOfURL(NSURL * initWithContentsOfURL, NSString *  fileTypeHint = null, NSError ** error);
+    typeof(this) initWithContentsOfURL(NSURL initWithContentsOfURL, NSString fileTypeHint = null, NSError* error);
 
     @selector("initWithData:fileTypeHint:error:")
-    typeof(this) initWithData(NSData * initWithData, NSString *  fileTypeHint = null, NSError ** error);
+    typeof(this) initWithData(NSData initWithData, NSString fileTypeHint = null, NSError* error);
 
     @selector("prepareToPlay")
     BOOL prepareToPlay();
@@ -70,21 +70,21 @@ class AVAudioPlayer {
     float averagePowerForChannel(NSUInteger averagePowerForChannel);
 
     @selector("audioPlayerDidFinishPlaying:successfully:")
-    void audioPlayerDidFinishPlaying(AVAudioPlayer * audioPlayerDidFinishPlaying, BOOL successfully);
+    void audioPlayerDidFinishPlaying(AVAudioPlayer audioPlayerDidFinishPlaying, BOOL successfully);
 
     @selector("audioPlayerDecodeErrorDidOccur:error:")
-    void audioPlayerDecodeErrorDidOccur(AVAudioPlayer * audioPlayerDecodeErrorDidOccur, NSError *  error = null);
+    void audioPlayerDecodeErrorDidOccur(AVAudioPlayer audioPlayerDecodeErrorDidOccur, NSError *  error = null);
 
     @selector("audioPlayerBeginInterruption:")
-    void audioPlayerBeginInterruption(AVAudioPlayer * audioPlayerBeginInterruption);
+    void audioPlayerBeginInterruption(AVAudioPlayer audioPlayerBeginInterruption);
 
     @selector("audioPlayerEndInterruption:withOptions:")
-    void audioPlayerEndInterruption(AVAudioPlayer * audioPlayerEndInterruption, NSUInteger withOptions);
+    void audioPlayerEndInterruption(AVAudioPlayer audioPlayerEndInterruption, NSUInteger withOptions);
 
     @selector("audioPlayerEndInterruption:withFlags:")
-    void audioPlayerEndInterruption(AVAudioPlayer * audioPlayerEndInterruption, NSUInteger withFlags);
+    void audioPlayerEndInterruptionFlags(AVAudioPlayer audioPlayerEndInterruption, NSUInteger withFlags);
 
     @selector("audioPlayerEndInterruption:")
-    void audioPlayerEndInterruption(AVAudioPlayer * audioPlayerEndInterruption);
+    void audioPlayerEndInterruption(AVAudioPlayer audioPlayerEndInterruption);
 
 }
