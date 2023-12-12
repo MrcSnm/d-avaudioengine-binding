@@ -1,6 +1,8 @@
 module avaudioionode;
 public import avaudionode;
 public import avaudiomixing;
+public import avaudioformat;
+
 import objc.meta;
 import objc.runtime;
 @ObjectiveC extern(C++) final:
@@ -8,7 +10,7 @@ import objc.runtime;
 class AVAudioIONode {
     mixin ObjcExtend! AVAudioNode;
     @selector("presentationLatency")
-    NSTimeInterval  presentationLatency();
+    NSTimeInterval presentationLatency();
 
     @selector("audioUnit")
     AudioUnit  audioUnit();

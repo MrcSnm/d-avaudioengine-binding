@@ -1,7 +1,10 @@
 module avaudiomixing;
 public import avaudiotypes;
-import objc.meta;
+public import avaudioconnectionpoint;
+public import avaudionode;
 import objc.runtime;
+import objc.meta : selector, ObjcExtend;
+
 @ObjectiveC extern(C++) final:
 
 interface AVAudioStereoMixing {
@@ -55,7 +58,7 @@ interface AVAudio3DMixing {
 class AVAudioMixingDestination {
     mixin ObjcExtend! NSObject;
     @selector("connectionPoint")
-    AVAudioConnectionPoint * connectionPoint();
+    AVAudioConnectionPoint connectionPoint();
 
     @selector("init")
     typeof(this) init();

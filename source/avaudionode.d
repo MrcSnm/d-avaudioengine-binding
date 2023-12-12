@@ -3,9 +3,10 @@ import avaudiotypes;
 import avaudioengine;
 import objc.meta;
 import objc.runtime;
+import avaudiotime;
 @ObjectiveC extern(C++) final:
 
-alias AVAudioNodeTapBlock = void function (AVAudioPCMBuffer *buffer, AVAudioTime *when);
+alias AVAudioNodeTapBlock = void function (AVAudioPCMBuffer buffer, AVAudioTime when);
 
 class AVAudioNode {
     mixin ObjcExtend! NSObject;
@@ -19,7 +20,7 @@ class AVAudioNode {
     NSUInteger  numberOfOutputs();
 
     @selector("lastRenderTime")
-    AVAudioTime * lastRenderTime();
+    AVAudioTime lastRenderTime();
 
     @selector("reset")
     void reset();

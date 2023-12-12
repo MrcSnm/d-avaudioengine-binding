@@ -1,6 +1,8 @@
 module avaudioformat;
 import objc.meta;
 import objc.runtime;
+public import avaudiochannellayout;
+
 @ObjectiveC extern(C++) final:
 
 enum AVAudioCommonFormat : NSUInteger 
@@ -52,12 +54,12 @@ class AVAudioFormat {
     typeof(this) initWithCommonFormat(AVAudioCommonFormat initWithCommonFormat, double sampleRate, BOOL interleaved, AVAudioChannelLayout * channelLayout);
 
     @selector("initWithSettings:")
-    typeof(this) initWithSettings(NSDictionary!(NSString *, id) * initWithSettings);
+    typeof(this) initWithSettings(NSDictionary_!(NSString, void*) initWithSettings);
 
-    @selector("initWithCMAudioFormatDescription:")
-    typeof(this) initWithCMAudioFormatDescription(CMAudioFormatDescriptionRef initWithCMAudioFormatDescription);
+    // @selector("initWithCMAudioFormatDescription:")
+    // typeof(this) initWithCMAudioFormatDescription(CMAudioFormatDescriptionRef initWithCMAudioFormatDescription);
 
     @selector("isEqual:")
-    BOOL isEqual(id isEqual);
+    BOOL isEqual(void* isEqual);
 
 }

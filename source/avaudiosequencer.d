@@ -1,4 +1,5 @@
 module avaudiosequencer;
+import avaudioengine;
 import objc.meta;
 import objc.runtime;
 @ObjectiveC extern(C++) final:
@@ -109,16 +110,16 @@ class AVAudioSequencer {
     float  rate(float );
 
     @selector("hostTimeForBeats:error:")
-    UInt64 hostTimeForBeats(AVMusicTimeStamp hostTimeForBeats, NSError ** error);
+    long hostTimeForBeats(AVMusicTimeStamp hostTimeForBeats, NSError* error);
 
     @selector("beatsForHostTime:error:")
-    AVMusicTimeStamp beatsForHostTime(UInt64 beatsForHostTime, NSError ** error);
+    AVMusicTimeStamp beatsForHostTime(long beatsForHostTime, NSError* error);
 
     @selector("prepareToPlay")
     void prepareToPlay();
 
     @selector("startAndReturnError:")
-    BOOL startAndReturnError(NSError ** startAndReturnError);
+    BOOL startAndReturnError(NSError* startAndReturnError);
 
     @selector("stop")
     void stop();
@@ -135,11 +136,11 @@ class AVMusicTrack {
     @selector("setDestinationAudioUnit:")
     AVAudioUnit * destinationAudioUnit(AVAudioUnit *);
 
-    @selector("destinationMIDIEndpoint")
-    MIDIEndpointRef  destinationMIDIEndpoint();
+    // @selector("destinationMIDIEndpoint")
+    // MIDIEndpointRef  destinationMIDIEndpoint();
 
-    @selector("setDestinationMIDIEndpoint:")
-    MIDIEndpointRef  destinationMIDIEndpoint(MIDIEndpointRef );
+    // @selector("setDestinationMIDIEndpoint:")
+    // MIDIEndpointRef  destinationMIDIEndpoint(MIDIEndpointRef );
 
     @selector("loopRange")
     AVBeatRange  loopRange();

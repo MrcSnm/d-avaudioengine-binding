@@ -1,7 +1,9 @@
 module avaudioplayernode;
 
-import avaudionode;
-import avaudiofile;
+public import avaudionode;
+public import avaudiofile;
+public import avaudiobuffer;
+public import avaudiotime;
 import objc.meta;
 import objc.runtime;
 @ObjectiveC extern(C++) final:
@@ -33,28 +35,28 @@ class AVAudioPlayerNode {
     typeof(this) init();
 
     @selector("scheduleBuffer:completionHandler:")
-    void scheduleBuffer(AVAudioPCMBuffer * scheduleBuffer, AVAudioNodeCompletionHandler  completionHandler = null);
+    void scheduleBuffer(AVAudioPCMBuffer scheduleBuffer, AVAudioNodeCompletionHandler  completionHandler = null);
 
     @selector("scheduleBuffer:completionCallbackType:completionHandler:")
-    void scheduleBuffer(AVAudioPCMBuffer * scheduleBuffer, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
+    void scheduleBuffer(AVAudioPCMBuffer scheduleBuffer, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
 
     @selector("scheduleBuffer:atTime:options:completionHandler:")
-    void scheduleBuffer(AVAudioPCMBuffer * scheduleBuffer, AVAudioTime *  atTime = null, AVAudioPlayerNodeBufferOptions options, AVAudioNodeCompletionHandler  completionHandler = null);
+    void scheduleBuffer(AVAudioPCMBuffer scheduleBuffer, AVAudioTime  atTime = null, AVAudioPlayerNodeBufferOptions options, AVAudioNodeCompletionHandler  completionHandler = null);
 
     @selector("scheduleBuffer:atTime:options:completionCallbackType:completionHandler:")
-    void scheduleBuffer(AVAudioPCMBuffer * scheduleBuffer, AVAudioTime *  atTime = null, AVAudioPlayerNodeBufferOptions options, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
+    void scheduleBuffer(AVAudioPCMBuffer scheduleBuffer, AVAudioTime  atTime = null, AVAudioPlayerNodeBufferOptions options, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
 
     @selector("scheduleFile:atTime:completionHandler:")
-    void scheduleFile(AVAudioFile * scheduleFile, AVAudioTime *  atTime = null, AVAudioNodeCompletionHandler  completionHandler = null);
+    void scheduleFile(AVAudioFile * scheduleFile, AVAudioTime  atTime = null, AVAudioNodeCompletionHandler  completionHandler = null);
 
     @selector("scheduleFile:atTime:completionCallbackType:completionHandler:")
-    void scheduleFile(AVAudioFile * scheduleFile, AVAudioTime *  atTime = null, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
+    void scheduleFile(AVAudioFile * scheduleFile, AVAudioTime  atTime = null, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
 
     @selector("scheduleSegment:startingFrame:frameCount:atTime:completionHandler:")
-    void scheduleSegment(AVAudioFile * scheduleSegment, AVAudioFramePosition startingFrame, AVAudioFrameCount frameCount, AVAudioTime *  atTime = null, AVAudioNodeCompletionHandler  completionHandler = null);
+    void scheduleSegment(AVAudioFile * scheduleSegment, AVAudioFramePosition startingFrame, AVAudioFrameCount frameCount, AVAudioTime  atTime = null, AVAudioNodeCompletionHandler  completionHandler = null);
 
     @selector("scheduleSegment:startingFrame:frameCount:atTime:completionCallbackType:completionHandler:")
-    void scheduleSegment(AVAudioFile * scheduleSegment, AVAudioFramePosition startingFrame, AVAudioFrameCount frameCount, AVAudioTime *  atTime = null, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
+    void scheduleSegment(AVAudioFile * scheduleSegment, AVAudioFramePosition startingFrame, AVAudioFrameCount frameCount, AVAudioTime  atTime = null, AVAudioPlayerNodeCompletionCallbackType completionCallbackType, AVAudioPlayerNodeCompletionHandler  completionHandler = null);
 
     @selector("stop")
     void stop();
@@ -66,15 +68,15 @@ class AVAudioPlayerNode {
     void play();
 
     @selector("playAtTime:")
-    void playAtTime(AVAudioTime *  playAtTime = null);
+    void playAtTime(AVAudioTime  playAtTime = null);
 
     @selector("pause")
     void pause();
 
     @selector("nodeTimeForPlayerTime:")
-    AVAudioTime * nodeTimeForPlayerTime(AVAudioTime * nodeTimeForPlayerTime);
+    AVAudioTime nodeTimeForPlayerTime(AVAudioTime nodeTimeForPlayerTime);
 
     @selector("playerTimeForNodeTime:")
-    AVAudioTime * playerTimeForNodeTime(AVAudioTime * playerTimeForNodeTime);
+    AVAudioTime playerTimeForNodeTime(AVAudioTime playerTimeForNodeTime);
 
 }

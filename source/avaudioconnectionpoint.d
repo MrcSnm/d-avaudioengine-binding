@@ -1,5 +1,6 @@
 module avaudioconnectionpoint;
-import avaudionode;
+public import avaudionode;
+public import avaudiotypes;
 import objc.meta;
 import objc.runtime;
 
@@ -9,13 +10,13 @@ import objc.runtime;
 class AVAudioConnectionPoint {
     mixin ObjcExtend! NSObject;
     @selector("node")
-    AVAudioNode * node();
+    AVAudioNode node();
 
     @selector("bus")
-    AVAudioNodeBus  bus();
+    AVAudioNodeBus bus();
 
     @selector("initWithNode:bus:")
-    typeof(this) initWithNode(AVAudioNode * initWithNode, AVAudioNodeBus bus);
+    typeof(this) initWithNode(AVAudioNode initWithNode, AVAudioNodeBus bus);
 
     @selector("init")
     typeof(this) init();
