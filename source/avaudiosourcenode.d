@@ -1,9 +1,14 @@
 module avaudiosourcenode;
 import objc.meta;
 import objc.runtime;
+
+public import avaudionode;
+public import avaudiotypes;
+public import avaudioformat;
+
 @ObjectiveC extern(C++) final:
 
-alias AVAudioSourceNodeRenderBlock = OSStatus function (BOOL *isSilence, const AudioTimeStamp *timestamp, AVAudioFrameCount frameCount, AudioBufferList *outputData)  ;
+alias AVAudioSourceNodeRenderBlock = OSStatus function (BOOL *isSilence, const AudioTimeStamp timestamp, AVAudioFrameCount frameCount, AudioBufferList *outputData);
 
 class AVAudioSourceNode {
     mixin ObjcExtend! AVAudioNode;
@@ -14,7 +19,7 @@ class AVAudioSourceNode {
     typeof(this) initWithRenderBlock(AVAudioSourceNodeRenderBlock initWithRenderBlock);
 
     @selector("initWithFormat:renderBlock:")
-    typeof(this) initWithFormat(AVAudioFormat* initWithFormat, AVAudioSourceNodeRenderBlock renderBlock);
+    typeof(this) initWithFormat(AVAudioFormat initWithFormat, AVAudioSourceNodeRenderBlock renderBlock);
 
 }
 

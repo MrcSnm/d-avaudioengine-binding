@@ -237,8 +237,46 @@ struct AudioTimeStamp
 
 }
 
-///Identifying information for an audio component.
+version(iOS)
+{
+    struct OpaqueAudioComponentInstance;
+    ///A component instance, or object, is an audio unit or audio codec.
+    alias AudioComponentInstance = OpaqueAudioComponentInstance*;
+}
+else
+{
+    struct ComponentInstanceRecord{long[1] data;}
+    alias AudioComponentInstance = ComponentInstanceRecord*;
+}
 
+
+///The data type for a plug-in component that provides audio processing or audio data generation.
+alias AudioUnit = AudioComponentInstance;
+
+///Identifying information for an audio component.
+struct AudioComponentDescription
+{
+    ///A unique 4-byte code identifying the interface for the component.
+    OSType componentType;
+    ///A 4-byte code that you can use to indicate the purpose of a component. For example, you could use lpas or lowp as a mnemonic indication that an audio unit is a low-pass filter.
+    OSType componentSubType;
+    ///The unique vendor identifier, registered with Apple, for the audio component.
+    OSType componentManufacturer;
+    ///Set this value to zero.
+    uint componentFlags = 0;
+    ///Set this value to zero.
+    uint componentFlagsMask = 0;
+}
+
+enum AudioComponentInstantiationOptions : uint
+{
+    kAudioComponentInstantiation_LoadInProcess = 2,
+    kAudioComponentInstantiation_LoadOutOfProcess = 1,
+    kAudioComponentInstantiation_LoadedRemotely = 1u << 31,
+}
+
+///The type that represents a block to render operation calls to get input data when in manual rendering mode.
+alias AVAudioIONodeInputBlock = const AudioBufferList* function(AVAudioFrameCount inNumberOfFrames);
 
 ///Expresses time as a sample count.
 alias AUEventSampleTime = long;

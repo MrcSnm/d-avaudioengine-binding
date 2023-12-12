@@ -2,6 +2,7 @@ module avaudiounit;
 import objc.runtime;
 import objc.meta;
 public import avaudionode;
+public import avaudiotypes;
 
 @ObjectiveC extern(C++) final:
 

@@ -1,10 +1,12 @@
 module avaudiosinknode;
-import avaudionode;
+public import avaudionode;
+public import avaudiotypes;
+
 import objc.meta;
 import objc.runtime;
 @ObjectiveC extern(C++) final:
 
-alias AVAudioSinkNodeReceiverBlock = OSStatus function (const AudioTimeStamp *timestamp, AVAudioFrameCount frameCount, const AudioBufferList *inputData)  ;
+alias AVAudioSinkNodeReceiverBlock = OSStatus function (const AudioTimeStamp timestamp, AVAudioFrameCount frameCount, const AudioBufferList* inputData)  ;
  
 class AVAudioSinkNode {
     mixin ObjcExtend! AVAudioNode;

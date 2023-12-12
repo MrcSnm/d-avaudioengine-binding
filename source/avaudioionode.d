@@ -28,7 +28,7 @@ class AVAudioInputNode {
     typeof(this) init();
 
     @selector("setManualRenderingInputPCMFormat:inputBlock:")
-    BOOL setManualRenderingInputPCMFormat(AVAudioFormat * setManualRenderingInputPCMFormat, AVAudioIONodeInputBlock inputBlock);
+    BOOL setManualRenderingInputPCMFormat(AVAudioFormat setManualRenderingInputPCMFormat, AVAudioIONodeInputBlock inputBlock);
 
 }
 
