@@ -2,6 +2,7 @@ module avaudioionode;
 public import avaudionode;
 public import avaudiomixing;
 public import avaudioformat;
+public import avaudiounit;
 
 import objc.meta;
 import objc.runtime;

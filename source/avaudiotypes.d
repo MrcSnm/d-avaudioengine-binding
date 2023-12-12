@@ -159,6 +159,66 @@ enum AudioTimeStampFlags : uint
     kAudioTimeStampWordClockTimeValid = (1U << 3),
 
 }
+///A structure that defines SMPTE time flags.
+enum SMPTETimeFlags : uint
+{
+    kSMPTETimeRunning = (1U << 1),
+    kSMPTETimeUnknown = 0,
+    kSMPTETimeValid = (1U << 0)
+}
+
+///Constants that define SMPTE time types.
+enum SMPTETimeType : uint
+{
+    ///23.98 video frames per second.
+    kSMPTETimeType2398 = 11,
+    ///24 video frames per second—standard for 16mm and 35mm film.
+    kSMPTETimeType24 = 0,
+    ///25 video frames per second—standard for PAL and SECAM video.
+    kSMPTETimeType25 = 1,
+    ///29.97 video frames per second—standard for NTSC video.
+    kSMPTETimeType2997 = 4,
+    ///29.97 video frames per second, with video-frame numbers adjusted to ensure that the timecode matches elapsed clock time.
+    kSMPTETimeType2997Drop = 5,
+    ///30 video frames per second.
+    kSMPTETimeType30 = 3,
+    ///30 video frames per second, with video-frame numbers adjusted to ensure that the timecode matches elapsed clock time.
+    kSMPTETimeType30Drop = 2,
+    ///50 video frames per second.
+    kSMPTETimeType50 = 10,
+    ///59.94 video frames per second.
+    kSMPTETimeType5994 = 7,
+    ///59.94 video frames per second, with video-frame numbers adjusted to ensure that the timecode matches elapsed clock time.
+    kSMPTETimeType5994Drop = 9,
+    ///60 video frames per second.
+    kSMPTETimeType60 = 6,
+    ///60 video frames per second, with video-frame numbers adjusted to ensure that the timecode matches elapsed clock time.
+    kSMPTETimeType60Drop = 8
+}
+
+///A structure that defines an SMPTE time value.
+struct SMPTETime
+{
+    ///The total number of messages received. It takes 8 messages to carry a full SMPTE time code.
+    uint mCounter;
+    ///A set of flags that indicate the SMPTE state (see SMPTE Time Flags).
+    SMPTETimeFlags mFlags;
+    ///The value of the frames portion of the SMPTE time.
+    short mFrames;
+    ///The value of the hours portion of the SMPTE time.
+    short mHours;
+    ///The value of the minutes portion of the SMPTE time.
+    short mMinutes;
+    ///The value of the seconds portion of the SMPTE time.
+    short mSeconds;
+    ///The number of subframes per video frame (typically 80).
+    short mSubframeDivisor;
+    ///A subframe offset to the HH:MM:SS:FF time. You can use this field to position a time marker somewhere within the time span represented by a video frame, if necessary.
+    short mSubframes;
+    ///A SMPTE time type constant indicating the kind of SMPTE time used (see SMPTE Timecode Types).
+    SMPTETimeType mType;
+}
+
 
 ///A structure that represents a timestamp value.
 struct AudioTimeStamp
@@ -166,7 +226,20 @@ struct AudioTimeStamp
     ///A set of flags indicating which representations of the time are valid; see Audio Time Stamp Flags and Audio Time Stamp Flag Combination Constant.
     AudioTimeStampFlags mFlags;
 
+    ///The host machine's time base (see CoreAudio/HostTime.h).
+    ulong mHostTime;
+    ///The ratio of actual host ticks per sample frame to the nominal host ticks per sample frame.
+    double mRateScalar;
+    ///Pads the structure out to force an even 8-byte alignment.
+    uint mReserved;
+    ///The SMPTE time (see SMPTETime).
+
+
 }
+
+///Identifying information for an audio component.
+
+
 ///Expresses time as a sample count.
 alias AUEventSampleTime = long;
 enum AUEventSampleTimeImmediate = cast(AUEventSampleTime)0xffffffff00000000;

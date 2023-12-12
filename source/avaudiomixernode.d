@@ -4,6 +4,8 @@ public import avaudiomixing;
 import objc.runtime;
 import objc.meta:selector;
 
+@ObjectiveC extern(C++) final:
+
 
 class AVAudioMixerNode {
     mixin ObjcExtend! AVAudioNode;

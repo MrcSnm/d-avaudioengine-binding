@@ -3,6 +3,8 @@ public import avaudiotypes;
 import objc.runtime;
 import objc.meta:selector;
 
+@ObjectiveC extern(C++) final:
+
 class AVAudioTime {
     mixin ObjcExtend! NSObject;
     @selector("hostTimeValid")
