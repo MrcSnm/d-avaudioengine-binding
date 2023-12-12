@@ -1,8 +1,9 @@
 module avaudiosequencer;
-import avaudioengine;
-import avaudiounit;
 import objc.meta;
 import objc.runtime;
+public import avaudioengine;
+public import avaudiounit;
+public import avmusicevents;
 @ObjectiveC extern(C++) final:
 
 enum AVMusicSequenceLoadOptions : NSUInteger { 
@@ -128,14 +129,16 @@ class AVAudioSequencer {
 }
 
 
+///A callback the sequencer calls asynchronously during playback when it encounters a user event.
+alias AVAudioSequencerUserCallback = void function(AVMusicTrack track, NSData userData, AVMusicTimeStamp timeStamp);
 
 class AVMusicTrack {
     mixin ObjcExtend! NSObject;
     @selector("destinationAudioUnit")
-    AVAudioUnit * destinationAudioUnit();
+    AVAudioUnit destinationAudioUnit();
 
     @selector("setDestinationAudioUnit:")
-    AVAudioUnit * destinationAudioUnit(AVAudioUnit *);
+    AVAudioUnit destinationAudioUnit(AVAudioUnit);
 
     // @selector("destinationMIDIEndpoint")
     // MIDIEndpointRef  destinationMIDIEndpoint();
@@ -201,7 +204,7 @@ class AVMusicTrack {
     BOOL  usesAutomatedParameters(BOOL );
 
     @selector("addEvent:atBeat:")
-    void addEvent(AVMusicEvent * addEvent, AVMusicTimeStamp atBeat);
+    void addEvent(AVMusicEvent addEvent, AVMusicTimeStamp atBeat);
 
     @selector("moveEventsInRange:byAmount:")
     void moveEventsInRange(AVBeatRange moveEventsInRange, AVMusicTimeStamp byAmount);

@@ -275,6 +275,9 @@ enum AudioComponentInstantiationOptions : uint
     kAudioComponentInstantiation_LoadedRemotely = 1u << 31,
 }
 
+
+
+
 ///The type that represents a block to render operation calls to get input data when in manual rendering mode.
 alias AVAudioIONodeInputBlock = const AudioBufferList* function(AVAudioFrameCount inNumberOfFrames);
 

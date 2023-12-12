@@ -5,6 +5,7 @@ import objc.runtime;
 public import avaudionode;
 public import avaudiomixing;
 public import avaudiounitreverb;
+public import avaudiouniteq;
 
 @ObjectiveC extern(C++) final:
 
