@@ -60,7 +60,10 @@ enum AVAudioConverterOutputStatus : NSInteger {
 } 
 
 
-alias AVAudioConverterInputBlock = AVAudioBuffer function(AVAudioPacketCount inNumberOfPackets, AVAudioConverterInputStatus* outStatus);
+
+
+alias AVAudioConverterInputBlock_ = AVAudioBuffer function(AVAudioPacketCount inNumberOfPackets, AVAudioConverterInputStatus* outStatus);
+alias AVAudioConverterInputBlock = Block!(AVAudioBuffer, AVAudioPacketCount, AVAudioConverterInputStatus*)*;
 
 
 
@@ -120,11 +123,17 @@ class AVAudioConverter {
     @selector("reset")
     void reset();
 
-    @selector("convertToBuffer:fromBuffer:error:")
-    BOOL convertToBuffer(AVAudioPCMBuffer * convertToBuffer, const AVAudioPCMBuffer * fromBuffer, NSError ** error);
 
+    ///Performs a basic conversion between audio formats that doesn’t involve converting codecs or sample rates.
+    @selector("convertToBuffer:fromBuffer:error:")
+    BOOL convertToBuffer(AVAudioPCMBuffer convertToBuffer, const AVAudioPCMBuffer fromBuffer, NSError* error);
+
+    /** 
+    * Performs a conversion between audio formats, if the system supports it.
+    * Look at AVAudioConverterInputBlock_ for more reference in the type.
+    */
     @selector("convertToBuffer:error:withInputFromBlock:")
-    AVAudioConverterOutputStatus convertToBuffer(AVAudioBuffer * convertToBuffer, NSError ** error, AVAudioConverterInputBlock withInputFromBlock);
+    AVAudioConverterOutputStatus convertToBuffer(AVAudioBuffer convertToBuffer, NSError* error, AVAudioConverterInputBlock withInputFromBlock);
 
     @selector("bitRate")
     NSInteger  bitRate();

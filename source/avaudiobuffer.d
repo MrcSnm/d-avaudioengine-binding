@@ -22,10 +22,10 @@ class AVAudioBuffer {
 
 
 
+alias AVAudioPCMBufferDeallocator = extern(C) void function(const AudioBufferList*);
+
 class AVAudioPCMBuffer {
     mixin ObjcExtend! AVAudioBuffer;
-    @selector("frameCapacity")
-    AVAudioFrameCount  frameCapacity();
 
     @selector("frameLength")
     AVAudioFrameCount  frameLength();
@@ -33,15 +33,32 @@ class AVAudioPCMBuffer {
     @selector("setFrameLength:")
     AVAudioFrameCount  frameLength(AVAudioFrameCount );
 
-    @selector("stride")
-    NSUInteger  stride();
-
     @selector("initWithPCMFormat:frameCapacity:")
     typeof(this) initWithPCMFormat(AVAudioFormat initWithPCMFormat, AVAudioFrameCount frameCapacity);
 
+    ///Creates a PCM audio buffer instance without copying samples, for PCM audio data, with a specified buffer list and a deallocator block.
     @selector("initWithPCMFormat:bufferListNoCopy:deallocator:")
-    typeof(this) initWithPCMFormat(AVAudioFormat initWithPCMFormat, const AudioBufferList* bufferListNoCopy, void function() deallocator);
+    typeof(this) initWithPCMFormat(AVAudioFormat initWithPCMFormat, const AudioBufferList* bufferListNoCopy, AVAudioPCMBufferDeallocator deallocator);
 
+    ///The buffer’s audio samples as floating point values.
+    @selector("floatChannelData")
+    const(float*)* floatChannelData();
+
+    ///The buffer’s capacity, in audio sample frames.
+    @selector("frameCapacity") 
+    AVAudioFrameCount frameCapacity();
+
+    ///The buffer’s 16-bit integer audio samples.
+    @selector("int16ChannelData")
+    const(short*)* int16ChannelData();
+
+    ///The buffer’s 32-bit integer audio samples.
+    @selector("int32ChannelData")
+    const(int*)* int32ChannelData();
+
+    ///The buffer’s number of interleaved channels.
+    @selector("stride")
+    NSUInteger stride();
 }
 
 
@@ -71,10 +88,10 @@ class AVAudioCompressedBuffer {
     AudioStreamPacketDescription* packetDescriptions();
 
     @selector("initWithFormat:packetCapacity:maximumPacketSize:")
-    typeof(this) initWithFormat(AVAudioFormat * initWithFormat, AVAudioPacketCount packetCapacity, NSInteger maximumPacketSize);
+    typeof(this) initWithFormat(AVAudioFormat initWithFormat, AVAudioPacketCount packetCapacity, NSInteger maximumPacketSize);
 
     @selector("initWithFormat:packetCapacity:")
-    typeof(this) initWithFormat(AVAudioFormat * initWithFormat, AVAudioPacketCount packetCapacity);
+    typeof(this) initWithFormat(AVAudioFormat initWithFormat, AVAudioPacketCount packetCapacity);
 
 }
 
