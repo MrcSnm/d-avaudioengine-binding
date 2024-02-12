@@ -1,7 +1,7 @@
 {
 	"authors": ["Hipreme"],
 	"dependencies": {
-		"objc_meta": "~>1.0.13"
+		"objc_meta": "~>1.0.14"
 	},
 	"copyright": "Copyright © 2023, Hipreme",
 	"description": "AVAudioEngine binding for D.",
