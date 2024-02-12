@@ -1,10 +1,20 @@
 {
 	"authors": ["Hipreme"],
 	"dependencies": {
-		"objc_meta": "~>1.0.14"
+		"objc_meta": "~>1.0.15"
 	},
 	"copyright": "Copyright © 2023, Hipreme",
 	"description": "AVAudioEngine binding for D.",
+	"configurations": [
+		{
+			"name": "macOS",
+			"platforms": ["osx"],
+			"lflags": [
+				"-framework", "AVAudioEngine"
+			]
+		},
+		{"name": "test_generation"}
+	],
 	"license": "MIT",
 	"name": "avaudioengine"
 }
