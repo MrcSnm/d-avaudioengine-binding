@@ -8,6 +8,7 @@ import objc.runtime;
 @ObjectiveC extern(C++) final:
 
 class AVAudioConnectionPoint {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("node")
     AVAudioNode node();

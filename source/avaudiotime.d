@@ -6,6 +6,7 @@ import objc.meta:selector;
 @ObjectiveC extern(C++) final:
 
 class AVAudioTime {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("hostTimeValid")
     BOOL  isHostTimeValid();

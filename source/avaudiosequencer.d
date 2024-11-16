@@ -50,6 +50,7 @@ __gshared extern
 
 
 class AVAudioSequencer {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("tempoTrack")
     AVMusicTrack * tempoTrack();
@@ -133,6 +134,7 @@ class AVAudioSequencer {
 alias AVAudioSequencerUserCallback = void function(AVMusicTrack track, NSData userData, AVMusicTimeStamp timeStamp);
 
 class AVMusicTrack {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("destinationAudioUnit")
     AVAudioUnit destinationAudioUnit();

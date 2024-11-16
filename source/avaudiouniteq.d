@@ -22,6 +22,7 @@ enum AVAudioUnitEQFilterType : NSInteger {
 
 
 class AVAudioUnitEQFilterParameters {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("filterType")
     AVAudioUnitEQFilterType  filterType();

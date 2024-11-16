@@ -17,6 +17,7 @@ enum AVAudioCommonFormat : NSUInteger
 
 ///An object that describes the representation of an audio format.
 class AVAudioFormat {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("isStandard")
     BOOL  isStandard();

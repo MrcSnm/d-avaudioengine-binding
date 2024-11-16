@@ -6,6 +6,7 @@ public import avaudiounit;
 
 
 class AVAudioUnitEffect {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioUnit;
     @selector("bypass")
     BOOL  bypass();

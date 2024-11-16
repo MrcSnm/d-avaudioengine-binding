@@ -11,6 +11,7 @@ public import avaudioformat;
 alias AVAudioSourceNodeRenderBlock = OSStatus function (BOOL *isSilence, const AudioTimeStamp timestamp, AVAudioFrameCount frameCount, AudioBufferList *outputData);
 
 class AVAudioSourceNode {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioNode;
     @selector("init")
     typeof(this) init();

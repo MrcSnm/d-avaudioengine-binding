@@ -8,6 +8,7 @@ import objc.runtime;
 
 
 class AVAudioPlayer {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("playing")
     BOOL  isPlaying();

@@ -8,6 +8,7 @@ import objc.runtime;
 
 
 class AVAudioChannelLayout {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("layoutTag")
     AudioChannelLayoutTag  layoutTag();

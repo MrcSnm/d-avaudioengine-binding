@@ -9,6 +9,7 @@ import objc.runtime;
 @ObjectiveC extern(C++) final:
 
 class AVAudioIONode {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioNode;
     @selector("presentationLatency")
     NSTimeInterval presentationLatency();
@@ -23,6 +24,7 @@ class AVAudioIONode {
 
 
 class AVAudioInputNode {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioIONode;
     @selector("init")
     typeof(this) init();
@@ -33,6 +35,7 @@ class AVAudioInputNode {
 }
 
 class AVAudioOutputNode {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioIONode;
     @selector("init")
     typeof(this) init();

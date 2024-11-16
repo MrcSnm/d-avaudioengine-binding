@@ -8,6 +8,7 @@ import objc.meta:selector;
 
 
 class AVAudioMixerNode {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioNode;
     @selector("outputVolume")
     float  outputVolume();

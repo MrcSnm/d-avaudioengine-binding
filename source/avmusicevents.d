@@ -17,6 +17,7 @@ class AVMusicEvent {
 
 
 class AVMIDINoteEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("channel")
     uint  channel();
@@ -107,6 +108,7 @@ enum AVMIDIControlChangeMessageType : NSInteger {
 
 
 class AVMIDIControlChangeEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMIDIChannelEvent;
     @selector("messageType")
     AVMIDIControlChangeMessageType  messageType();
@@ -123,6 +125,7 @@ class AVMIDIControlChangeEvent {
 
 
 class AVMIDIPolyPressureEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMIDIChannelEvent;
     @selector("key")
     uint  key();
@@ -145,6 +148,7 @@ class AVMIDIPolyPressureEvent {
 
 
 class AVMIDIProgramChangeEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMIDIChannelEvent;
     @selector("programNumber")
     uint  programNumber();
@@ -161,6 +165,7 @@ class AVMIDIProgramChangeEvent {
 
 
 class AVMIDIChannelPressureEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMIDIChannelEvent;
     @selector("pressure")
     uint  pressure();
@@ -177,6 +182,7 @@ class AVMIDIChannelPressureEvent {
 
 
 class AVMIDIPitchBendEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMIDIChannelEvent;
     @selector("value")
     uint  value();
@@ -193,6 +199,7 @@ class AVMIDIPitchBendEvent {
 
 
 class AVMIDISysexEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("sizeInBytes")
     uint  sizeInBytes();
@@ -226,6 +233,7 @@ enum AVMIDIMetaEventType : NSInteger {
 
 
 class AVMIDIMetaEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("type")
     AVMIDIMetaEventType  type();
@@ -239,6 +247,7 @@ class AVMIDIMetaEvent {
 
 
 class AVMusicUserEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("sizeInBytes")
     uint  sizeInBytes();
@@ -257,6 +266,7 @@ extern __gshared const uint  AVExtendedNoteOnEventDefaultInstrument;
 
 
 class AVExtendedNoteOnEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("midiNote")
     float  midiNote();
@@ -300,6 +310,7 @@ class AVExtendedNoteOnEvent {
 
 
 class AVParameterEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("parameterID")
     uint  parameterID();
@@ -335,6 +346,7 @@ class AVParameterEvent {
 
 
 class AVAUPresetEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("scope")
     uint  scope_();
@@ -360,6 +372,7 @@ class AVAUPresetEvent {
 
 
 class AVExtendedTempoEvent {
+    @nogc nothrow:
     mixin ObjcExtend! AVMusicEvent;
     @selector("tempo")
     double  tempo();

@@ -8,6 +8,7 @@ import avaudioformat;
 
 
 class AVAudioBuffer {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("format")
     AVAudioFormat format();
@@ -25,6 +26,7 @@ class AVAudioBuffer {
 alias AVAudioPCMBufferDeallocator = extern(C) void function(const AudioBufferList*);
 
 class AVAudioPCMBuffer {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioBuffer;
 
     @selector("frameLength")
@@ -68,6 +70,8 @@ class AVAudioPCMBuffer {
 
 
 class AVAudioCompressedBuffer {
+    @nogc nothrow:
+
     mixin ObjcExtend! AVAudioBuffer;
     @selector("packetCapacity")
     AVAudioPacketCount  packetCapacity();

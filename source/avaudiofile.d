@@ -6,6 +6,7 @@ import objc.runtime;
 @ObjectiveC extern(C++) final:
 
 class AVAudioFile {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("url")
     NSURL url();

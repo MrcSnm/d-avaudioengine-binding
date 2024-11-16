@@ -9,6 +9,7 @@ import avaudiotime;
 alias AVAudioNodeTapBlock = void function (AVAudioPCMBuffer buffer, AVAudioTime when);
 
 class AVAudioNode {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("engine")
     AVAudioEngine engine();

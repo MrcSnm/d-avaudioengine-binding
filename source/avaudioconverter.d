@@ -68,6 +68,7 @@ alias AVAudioConverterInputBlock = Block!(AVAudioBuffer, AVAudioPacketCount, AVA
 
 
 class AVAudioConverter {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("inputFormat")
     AVAudioFormat inputFormat();

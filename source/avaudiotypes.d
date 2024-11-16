@@ -394,17 +394,17 @@ struct AVAudio3DPoint {
     float z;
 }
 
-AVAudio3DPoint AVAudioMake3DPoint(float x, float y, float z);
+AVAudio3DPoint AVAudioMake3DPoint(float x, float y, float z) @nogc nothrow;
 alias AVAudio3DVector = AVAudio3DPoint;
 
-AVAudio3DVector AVAudioMake3DVector(float x, float y, float z);
+AVAudio3DVector AVAudioMake3DVector(float x, float y, float z) @nogc nothrow;
 
 struct AVAudio3DVectorOrientation {
     AVAudio3DVector forward;
     AVAudio3DVector up;
 }
 
-AVAudio3DVectorOrientation AVAudioMake3DVectorOrientation(AVAudio3DVector forward, AVAudio3DVector up);
+AVAudio3DVectorOrientation AVAudioMake3DVectorOrientation(AVAudio3DVector forward, AVAudio3DVector up) @nogc nothrow;
 struct AVAudio3DAngularOrientation {
     float yaw;
     float pitch;
@@ -412,4 +412,4 @@ struct AVAudio3DAngularOrientation {
 }
 
 
-AVAudio3DAngularOrientation AVAudioMake3DAngularOrientation(float yaw, float pitch, float roll);
+AVAudio3DAngularOrientation AVAudioMake3DAngularOrientation(float yaw, float pitch, float roll) @nogc nothrow;

@@ -27,6 +27,7 @@ alias AVAudioPlayerNodeCompletionHandler = void function (AVAudioPlayerNodeCompl
 
 
 class AVAudioPlayerNode {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioNode;
     @selector("playing")
     BOOL  isPlaying();

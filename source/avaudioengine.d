@@ -48,6 +48,7 @@ alias MusicSequence = OpaqueMusicSequence*;
 
 
 class AVAudioEngine {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("musicSequence")
     MusicSequence  musicSequence();

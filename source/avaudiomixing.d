@@ -8,6 +8,7 @@ import objc.meta : selector, ObjcExtend;
 @ObjectiveC extern(C++) final:
 
 interface AVAudioStereoMixing {
+    @nogc nothrow:
     @selector("volume")
     float  volume();
 
@@ -56,6 +57,7 @@ interface AVAudio3DMixing {
 }
 
 class AVAudioMixingDestination {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("connectionPoint")
     AVAudioConnectionPoint connectionPoint();

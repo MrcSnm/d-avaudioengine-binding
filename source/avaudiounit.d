@@ -8,6 +8,7 @@ public import avaudiotypes;
 
 
 class AVAudioUnit {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioNode;
     @selector("audioComponentDescription")
     AudioComponentDescription  audioComponentDescription();

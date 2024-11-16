@@ -23,6 +23,7 @@ enum AVAudioUnitReverbPreset : NSInteger {
 
  
 class AVAudioUnitReverb {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioUnitEffect;
     @selector("wetDryMix")
     float  wetDryMix();

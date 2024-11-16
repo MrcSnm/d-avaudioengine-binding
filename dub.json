@@ -1,17 +1,17 @@
 {
 	"authors": ["Hipreme"],
 	"dependencies": {
-		"objc_meta": "~>1.0.15"
+		"objc_meta": "~>1.1.0"
 	},
-	"copyright": "Copyright © 2023, Hipreme",
+	"copyright": "Copyright © 2023 - 2024, Hipreme",
 	"description": "AVAudioEngine binding for D.",
 	"configurations": [
 		{
 			"name": "macOS",
 			"platforms": ["osx"],
-			"lflags": [
-				"-framework", "AVAudioEngine"
-			]
+			"lflags-ios": ["-framework", "AVAudioEngine"],
+			"lflags-osx": ["-framework", "AVFoundation"],
+			"targetType": "library"
 		},
 		{"name": "test_generation"}
 	],

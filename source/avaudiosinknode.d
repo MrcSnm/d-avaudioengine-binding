@@ -9,6 +9,7 @@ import objc.runtime;
 alias AVAudioSinkNodeReceiverBlock = OSStatus function (const AudioTimeStamp timestamp, AVAudioFrameCount frameCount, const AudioBufferList* inputData)  ;
  
 class AVAudioSinkNode {
+    @nogc nothrow:
     mixin ObjcExtend! AVAudioNode;
     @selector("init")
     typeof(this) init();

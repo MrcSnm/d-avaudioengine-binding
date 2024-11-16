@@ -19,6 +19,7 @@ enum AVAudioEnvironmentDistanceAttenuationModel : NSInteger {
 
 
 class AVAudioEnvironmentDistanceAttenuationParameters {
+    @nogc nothrow:
     mixin ObjcExtend! NSObject;
     @selector("distanceAttenuationModel")
     AVAudioEnvironmentDistanceAttenuationModel  distanceAttenuationModel();
